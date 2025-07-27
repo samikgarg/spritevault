@@ -3,8 +3,8 @@ spring:
     name: spritevault
   datasource:
     url: jdbc:postgresql://localhost:5432/jwt_security
-    username: samikgarg
-    password: Samik@2005
+    username: ${DB_USERNAME:samikgarg}
+    password: ${DB_PASSWORD:Samik@2005}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -16,5 +16,7 @@ spring:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 jwt:
-  secret: ${JWT_SECRET_KEY}
+  secret: ${JWT_SECRET_KEY:your-default-secret-key-for-development-only-change-in-production}
+  refresh-token:
+    expiration: 604800000
 
